@@ -15,7 +15,7 @@ utenteRouter.get("/get", async (req, res) => {
 });
 
 utenteRouter.post("/register", async (req, res) => {
-    const {username, password} = req.body;
+    const {username, password, nome, cognome, email} = req.body;
     const user = await utenteModel.findOne({username: username});
 
     if(user){
@@ -24,7 +24,7 @@ utenteRouter.post("/register", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser = new utenteModel({username: username, password: hashedPassword});
+    const newUser = new utenteModel({username: username, password: hashedPassword, nome: nome, cognome: cognome, email: email});
     await newUser.save();
 
     res.json({message: "User registered successfully"});

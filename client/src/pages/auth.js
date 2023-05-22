@@ -69,6 +69,9 @@ const Login = () => {
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [nome, setNome] = useState("");
+  const [cognome, setCognome] = useState("");
+  const [email, setEmail] = useState("");
 
   const [_, setCookies] = useCookies(["access_token"]);
   const navigate = useNavigate();
@@ -79,6 +82,9 @@ const Register = () => {
       await axios.post("http://localhost:3001/api/v1/auth/register", {
         username,
         password,
+        nome,
+        cognome,
+        email
       });
       alert("Registrazione completata!");
     } catch (error) {
@@ -97,6 +103,33 @@ const Register = () => {
             id="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="nome">Nome:</label>
+          <input
+            type="text"
+            id="nome"
+            value={nome}
+            onChange={(event) => setNome(event.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="cognome">Cognome:</label>
+          <input
+            type="text"
+            id="cognome"
+            value={cognome}
+            onChange={(event) => setCognome(event.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
         </div>
         <div className="form-group">
