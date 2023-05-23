@@ -3,13 +3,16 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const annuncioRouter = require('./routes/annuncio');
 const utenteRouter = require('./routes/utente');
+const dotenv = require('./node_modules/dotenv');
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
-    "mongodb+srv://admin:admin@cluster0.qneeyfu.mongodb.net/UniXchangeDB?retryWrites=true&w=majority"
+    process.env.DB_URL
 );
 
 const db = mongoose.connection;

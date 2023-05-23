@@ -43,7 +43,7 @@ utenteRouter.post("/login", async (req, res) => {
         return res.json({message: "Username or password is incorrect"})
     }
 
-    const token = jwt.sign({id: user._id}, "secret");
+    const token = jwt.sign({id: user._id}, process.env.SECRET_KEY);
     res.json({token: token, userID: user._id})
 
 
