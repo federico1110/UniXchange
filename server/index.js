@@ -26,6 +26,11 @@ app.use("/api/v1/auth", utenteRouter);
 
 app.listen(3001, () => console.log("SERVER STARTED"));
 
+app.use((req, res) => {
+  res.status(404);
+  res.json({ error: "Not found"});
+});
+
 
 
 
