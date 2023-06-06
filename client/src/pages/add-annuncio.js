@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import universitaList from '../data/universita.json';
 
+const serverURL = process.env.REACT_APP_SERVER_URL;
+
 export const AddAnnuncio = () => {
 
   const [inputValues, setInputValues] = useState({
@@ -48,7 +50,7 @@ export const AddAnnuncio = () => {
     }
 
     try {
-      const response = await fetch("https://unixchange-server.onrender.com/api/v1/annuncio/add",
+      const response = await fetch(`${serverURL}/api/v1/annuncio/add`,
         {
           method: "POST",
           headers: {

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import universitaList from '../data/universita.json';
 
+const serverURL = process.env.REACT_APP_SERVER_URL;
+
 export const Vetrina = () => {
   const [nomeProdotto, setNomeProdotto] = useState("");
   const [categoria, setCategoria] = useState("");
@@ -12,7 +14,7 @@ export const Vetrina = () => {
   const searchAnnuncio = async () => {
 
     try {
-      const response = await axios.get("https://unixchange-server.onrender.com/api/v1/annuncio/get", {
+      const response = await axios.get(`${serverURL}/api/v1/annuncio/get`, {
         params: {
           nome: nomeProdotto,
           categoria: categoria,

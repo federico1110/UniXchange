@@ -3,6 +3,8 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
+const serverURL = process.env.REACT_APP_SERVER_URL;
+
 export const Auth = () => {
   return (
     <div className="auth">
@@ -21,13 +23,11 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const serverURL = process.env.REACT_APP_SERVER_URL;
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-        const result = await axios.post("${serverURL}/api/v1/auth/login", {
+        const result = await axios.post(`${serverURL}/api/v1/auth/login`, {
         username,
         password,
       });
@@ -81,7 +81,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("${serverURL}/api/v1/auth/register", {
+      await axios.post(`${serverURL}/api/v1/auth/register`, {
         username,
         password,
         nome,
