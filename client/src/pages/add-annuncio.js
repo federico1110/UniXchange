@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import universitaList from '../data/universita.json';
 
 export const AddAnnuncio = () => {
+
   const [inputValues, setInputValues] = useState({
     nome: "",
     descrizione: "",
     categoria: "",
     prezzo: "",
+    universita: "",
   });
 
   const handleChange = (event) => {
@@ -34,18 +37,18 @@ export const AddAnnuncio = () => {
     proprietario: window.localStorage.getItem("userID"),
     dataAnnuncio: new Date().toISOString(),
   };
-  
+
 
   const sendData = async () => {
     const obbligatori = ["nome", "descrizione", "categoria", "prezzo"];
 
-    if (obbligatori.some((campo) => inputValues[campo].length === 0) || body.immagine == ""){
+    if (obbligatori.some((campo) => inputValues[campo].length === 0) || body.immagine == "") {
       alert("Inserisci tutti i campi obbligatori");
       return;
     }
 
     try {
-        const response = await fetch("http://localhost:3001/api/v1/annuncio/add",
+      const response = await fetch("http://localhost:3001/api/v1/annuncio/add",
         {
           method: "POST",
           headers: {
@@ -61,40 +64,51 @@ export const AddAnnuncio = () => {
     }
   };
 
+  return (
+    <div className="add-annuncio">
+      <h2> Aggiungi Annuncio</h2>
+      <form>
+        <div className="formAddAnnuncio">
+          <label htmlFor="nome"> Nome </label>
+          <input type="text" id="nome" name="nome" onChange={handleChange} />
+        </div>
+        <div className="formAddAnnuncio">
+          <label htmlFor="descrizione"> Descrizione </label>
+          <textarea id="descrizione" name="descrizione" onChange={handleChange} > </textarea>
+        </div>
+        <div className="formAddAnnuncio">
+          <label htmlFor="categoria">Categoria</label>
+          <select id="categoria" name="categoria" onChange={handleChange}>
+            <option value="">Seleziona categoria</option>
+            <option value="Computer">Computer</option>
+            <option value="Telefonia">Telefonia</option>
+            <option value="Libri">Libri</option>
+            <option value="Accessori elettronici">Accessori elettronici</option>
+            <option value="Altro">Altro</option>
+          </select>
+        </div>
+        <div className="formAddAnnuncio">
+          <label htmlFor="prezzo"> Prezzo </label>
+          <input type="number" id="prezzo" name="prezzo" onChange={handleChange} />
+        </div>
 
-    return (
-    <div className="add-annuncio"> 
-        <h2> Aggiungi Annuncio</h2>
-        <form>
-            <div className="formAddAnnuncio">
-                <label htmlFor="nome"> Nome </label>
-                <input type="text" id="nome" name="nome" onChange={handleChange}/>
-            </div>
-            <div className="formAddAnnuncio">
-                <label htmlFor="descrizione"> Descrizione </label>
-                <textarea id="descrizione" name="descrizione" onChange={handleChange} > </textarea>
-            </div>
-            <div>
-                <select id="categoria" name="categoria" onChange={handleChange}>
-                    <option value="">Seleziona categoria</option>
-                    <option value="Computer">Computer</option>
-                    <option value="Telefonia">Telefonia</option>
-                    <option value="Libri">Libri</option>
-                    <option value="Accessori elettronici">Accessori elettronici</option>
-                    <option value="Altro">Altro</option>
-                </select>
-            </div>
-            <div className="formAddAnnuncio">
-                <label htmlFor="prezzo"> Prezzo </label>
-                <input type="number" id="prezzo" name="prezzo" onChange={handleChange}/> 
-            </div>
-            <div className="formAddAnnuncio">
-                <label htmlFor="immagine"> Immagine </label>
-                <input type="file" id="immagine" name="immagine" onChange={convertToBase64}/>
-            </div>
-            
-            <button type="button" onClick={sendData}>Aggiungi annuncio</button>
-        </form>
+        <div className="formAddAnnuncio">
+          <label htmlFor="universita">Università</label>
+          <select id="universita" name="universita" value={inputValues.universita} onChange={handleChange}>
+            <option value="">Seleziona università</option>
+            {universitaList.records.map((universita) => (
+              <option key={universita.COD_Ateneo} value={universita.NomeEsteso}>{universita[2]}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="formAddAnnuncio">
+          <label htmlFor="immagine"> Immagine </label>
+          <input type="file" id="immagine" name="immagine" onChange={convertToBase64} />
+        </div>
+
+        <button type="button" onClick={sendData}>Aggiungi annuncio</button>
+      </form>
     </div>)
 };
 
