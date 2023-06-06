@@ -25,7 +25,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-        const result = await axios.post("https://unixchange.onrender.com/api/v1/auth/login", {
+        const result = await axios.post("https://unixchange-server.onrender.com/api/v1/auth/login", {
         username,
         password,
       });
@@ -79,7 +79,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("https://unixchange.onrender.com/api/v1/auth/register", {
+      await axios.post("https://unixchange-server.onrender.com/api/v1/auth/register", {
         username,
         password,
         nome,

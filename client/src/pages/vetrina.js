@@ -12,7 +12,7 @@ export const Vetrina = () => {
   const searchAnnuncio = async () => {
 
     try {
-      const response = await axios.get("https://unixchange.onrender.com/api/v1/annuncio/get", {
+      const response = await axios.get("https://unixchange-server.onrender.com/api/v1/annuncio/get", {
         params: {
           nome: nomeProdotto,
           categoria: categoria,
