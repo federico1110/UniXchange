@@ -3,7 +3,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
-const serverURL = process.env.REACT_APP_SERVER_URL;
+const serverURL = process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
 
 export const Auth = () => {
   return (

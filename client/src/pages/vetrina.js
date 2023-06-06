@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import universitaList from '../data/universita.json';
 
-const serverURL = process.env.REACT_APP_SERVER_URL;
+const serverURL = process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
 
 export const Vetrina = () => {
   const [nomeProdotto, setNomeProdotto] = useState("");

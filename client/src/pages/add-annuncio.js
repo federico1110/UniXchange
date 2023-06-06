@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import universitaList from '../data/universita.json';
 
-const serverURL = process.env.REACT_APP_SERVER_URL;
+const serverURL = process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
 
 export const AddAnnuncio = () => {
 
