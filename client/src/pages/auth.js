@@ -79,7 +79,7 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("http://localhost:3001/api/v1/auth/register", {
+      await axios.post("https://unixchange.onrender.com/api/v1/auth/register", {
         username,
         password,
         nome,

@@ -48,7 +48,7 @@ export const AddAnnuncio = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3001/api/v1/annuncio/add",
+      const response = await fetch("https://unixchange.onrender.com/api/v1/annuncio/add",
         {
           method: "POST",
           headers: {
