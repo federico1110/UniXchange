@@ -72,7 +72,7 @@ annuncioRouter.delete("/delete", async (req, res) => {
 
     res.json({ message: "Annunci eliminati con successo" });
   } catch (error) {
-    res.json(error);
+    res.status(500).json(error);
   }
 });
 
