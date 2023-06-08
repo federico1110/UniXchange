@@ -36,14 +36,18 @@ annuncioRouter.get("/get", async (req, res) => {
         }
       
         if (Object.keys(query).length === 0) {
-          return res.json({ message: "Nessun parametro fornito" });
+          res.status(400);
+          res.json({ message: "Nessun parametro fornito" });
+          return 
         }
       }
   
       const annunci = await annuncioModel.find(query);
   
       if (annunci.length === 0) { 
-        return res.json({ message: "Annuncio non esiste" });
+        res.status(404);
+        res.json({ message: "Annuncio non esiste" });
+        return 
       }
   
       res.json(annunci);

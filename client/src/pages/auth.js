@@ -31,12 +31,18 @@ const Login = () => {
         username,
         password,
       });
-
+      
       setCookies("access_token", result.data.token);
       window.localStorage.setItem("userID", result.data.userID);
       navigate("/");
     } catch (error) {
       console.error(error);
+      if (error.response.status === 404) {
+        alert("Utente non esistente");
+      }
+      if (error.response.status === 401) {
+        alert("Username o password errati");
+      }
     }
   };
 
@@ -75,11 +81,14 @@ const Register = () => {
   const [cognome, setCognome] = useState("");
   const [email, setEmail] = useState("");
 
-  const [_, setCookies] = useCookies(["access_token"]);
-  const navigate = useNavigate();
-
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    if (!username || !password || !nome || !cognome || !email) {
+      alert("Inserisci tutti i campi per completare la registrazione");
+      return;
+    }
+
     try {
       await axios.post(`${serverURL}/api/v1/auth/register`, {
         username,
@@ -91,6 +100,10 @@ const Register = () => {
       alert("Registrazione completata!");
     } catch (error) {
       console.error(error);
+      if (error.response.status === 409) {
+        alert("Utente già esistente");
+      }
+      
     }
   };
 

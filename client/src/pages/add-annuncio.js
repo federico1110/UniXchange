@@ -20,9 +20,19 @@ export const AddAnnuncio = () => {
 
   const [base64Image, setBase64Image] = useState("");
 
+  const MAX_IMAGE_SIZE = 50 * 1024; // 50 KB
+
   function convertToBase64(e) {
+    const file = e.target.files[0];
+
+    if (file.size > MAX_IMAGE_SIZE) {
+      alert("Dimensione dell'immagine supera il limite consentito di 50KB");
+      e.target.value = "";
+      return;
+    }
+
     let reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
+    reader.readAsDataURL(file);
     reader.onload = () => {
       console.log(reader.result);
       setBase64Image(reader.result);
@@ -106,7 +116,7 @@ export const AddAnnuncio = () => {
 
         <div className="formAddAnnuncio">
           <label htmlFor="immagine"> Immagine </label>
-          <input type="file" id="immagine" name="immagine" onChange={convertToBase64} />
+          <input type="file" id="immagine" name="immagine" onChange={convertToBase64} accept="image/*"/>
         </div>
 
         <button type="button" onClick={sendData}>Aggiungi annuncio</button>

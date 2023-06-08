@@ -25,9 +25,14 @@ export const Vetrina = () => {
 
       setAnnunci(response.data);
       setShowAnnunci(true);
+      console.log("1" + response.data);
 
     } catch (error) {
       console.error(error);
+      if (error.response.status === 404) {
+        setAnnunci(null);
+        setShowAnnunci(true);
+      }
     }
   };
 

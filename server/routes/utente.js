@@ -12,7 +12,9 @@ utenteRouter.get("/get", async (req, res) => {
         
         console.log(utente)
         if (utente == null) { 
-            return res.json({ message: "Utente non trovato" });
+            res.status(404);
+            res.json({ message: "Utente non trovato" });
+            return 
           }
 
         res.json(utente);
@@ -25,9 +27,11 @@ utenteRouter.get("/get", async (req, res) => {
 utenteRouter.post("/register", async (req, res) => {
     const {username, password, nome, cognome, email} = req.body;
     const user = await utenteModel.findOne({username: username});
-
+    
     if(user){
-        return res.json({message: "Utente esiste di già"});
+        res.status(409);
+        res.json({ message: "Utente esiste già" });
+        return 
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -43,12 +47,16 @@ utenteRouter.post("/login", async (req, res) => {
     const user = await utenteModel.findOne({username: username});
 
     if(!user){ 
-        return res.json({message: "L'utente non esiste"})
+        res.status(404);
+        res.json({message: "L'utente non esiste"});
+        return 
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if(!isPasswordValid){
-        return res.json({message: "Username o password sono incorretti"})
+        res.status(401);
+        res.json({ message: "Username o password sono incorretti" });
+        return 
     }
 
     const token = jwt.sign({id: user._id}, process.env.SECRET_KEY);

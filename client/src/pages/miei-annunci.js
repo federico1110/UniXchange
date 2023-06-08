@@ -25,6 +25,9 @@ export const MieiAnnunci = () => {
       }
     } catch (error) {
       console.error(error);
+      if (error.response.status === 404) {
+        setAnnunci(null); 
+      }
     }
   };
 
