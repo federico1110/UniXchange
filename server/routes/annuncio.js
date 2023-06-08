@@ -10,6 +10,7 @@ annuncioRouter.get("/get", async (req, res) => {
     const nomeProdotto = req.query.nome;
     const categoria = req.query.categoria;
     const universita = req.query.universita;
+    const idProp = req.query.proprietario;
     
     try {
       let query = {};
@@ -29,16 +30,20 @@ annuncioRouter.get("/get", async (req, res) => {
         if (categoria) {
           query.categoria = categoria;
         }
+
+        if (idProp) {
+          query.proprietario = idProp;
+        }
       
         if (Object.keys(query).length === 0) {
-          return res.json({ message: "Nessun parametro fornito" });
+          return res.status(400).json({ message: "Nessun parametro fornito" });
         }
       }
   
       const annunci = await annuncioModel.find(query);
   
       if (annunci.length === 0) { 
-        return res.json({ message: "Annuncio non esiste" });
+        return res.status(404).json({ message: "Annuncio non esiste" });
       }
   
       res.json(annunci);
@@ -59,7 +64,17 @@ annuncioRouter.post("/add", async (req, res) => {
     }
 });
 
+annuncioRouter.delete("/delete", async (req, res) => {
+  const { annunci } = req.body;
 
+  try {
+    await annuncioModel.deleteMany({ _id: { $in: annunci } });
+
+    res.json({ message: "Annunci eliminati con successo" });
+  } catch (error) {
+    res.json(error);
+  }
+});
 
 
 module.exports = annuncioRouter;

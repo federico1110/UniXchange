@@ -70,6 +70,17 @@ input {
   font-size: 25px;
 }
 
+.navbar img {
+  margin-top: 15px;
+  margin-left: -50px;
+  max-width: 150px;
+  height: auto;
+}
+
+.active {
+  font-weight: bold;
+}
+
 a {
   color: white;
   text-decoration: none;
@@ -214,7 +225,22 @@ p {
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+  max-width: 500px;
+  max-height: 350px;
   margin-bottom: 10px;
+}
+
+#miei-annunci-btn {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 2px solid red;
+  background-color: red;
+  height: 30%;
+  align-self: center;
+  margin-right: 10px;
+}
+
+input[type=checkbox]{
+  transform: scale(1.5);
 }

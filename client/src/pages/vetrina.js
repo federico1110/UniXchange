@@ -98,6 +98,9 @@ export const Vetrina = () => {
                     <h3>Prezzo: {annuncio.prezzo} €</h3>
                   </div>
                   <div>
+                    <h3>Università: {annuncio.universita} </h3>
+                  </div>
+                  <div>
                     <h3>Descrizione: {annuncio.descrizione}</h3>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
