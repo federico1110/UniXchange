@@ -36,14 +36,14 @@ annuncioRouter.get("/get", async (req, res) => {
         }
       
         if (Object.keys(query).length === 0) {
-          return res.status(400).json({ message: "Nessun parametro fornito" });
+          return res.json({ message: "Nessun parametro fornito" });
         }
       }
   
       const annunci = await annuncioModel.find(query);
   
       if (annunci.length === 0) { 
-        return res.status(404).json({ message: "Annuncio non esiste" });
+        return res.json({ message: "Annuncio non esiste" });
       }
   
       res.json(annunci);
@@ -72,7 +72,7 @@ annuncioRouter.delete("/delete", async (req, res) => {
 
     res.json({ message: "Annunci eliminati con successo" });
   } catch (error) {
-    res.status(500).json(error);
+    res.json(error);
   }
 });
 
