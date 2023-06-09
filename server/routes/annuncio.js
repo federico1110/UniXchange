@@ -20,7 +20,7 @@ annuncioRouter.get("/get", async (req, res) => {
       } else {
         
         if (nomeProdotto) {
-          query.nome = nomeProdotto;
+          query.nome = { $regex: nomeProdotto, $options: "i" };
         }
       
         if (universita) {
