@@ -71,6 +71,19 @@ export const AddAnnuncio = () => {
       );
       alert("Il tuo annuncio è stato pubblicato");
       const data = await response.json();
+
+      setInputValues({
+        nome: "",
+        descrizione: "",
+        categoria: "",
+        prezzo: "",
+        universita: "",
+      });
+    
+      ["nome", "descrizione", "categoria", "prezzo", "universita", "immagine"].forEach((campo) => {
+        document.getElementById(campo).value = "";
+      });
+
     } catch (error) {
       console.error(error);
     }
