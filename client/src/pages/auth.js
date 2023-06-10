@@ -26,6 +26,11 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!username || !password ) {
+      alert("Inserisci tutti i campi per completare il login");
+      return;
+    }
+
     try {
         const result = await axios.post(`${serverURL}/api/v1/auth/login`, {
         username,
