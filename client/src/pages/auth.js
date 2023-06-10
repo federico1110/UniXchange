@@ -26,17 +26,17 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!username || !password ) {
+    if (!username || !password) {
       alert("Inserisci tutti i campi per completare il login");
       return;
     }
 
     try {
-        const result = await axios.post(`${serverURL}/api/v1/auth/login`, {
+      const result = await axios.post(`${serverURL}/api/v1/auth/login`, {
         username,
         password,
       });
-      
+
       setCookies("access_token", result.data.token);
       window.localStorage.setItem("userID", result.data.userID);
       navigate("/");
@@ -88,9 +88,21 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     if (!username || !password || !nome || !cognome || !email) {
       alert("Inserisci tutti i campi per completare la registrazione");
+      return;
+    }
+
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/; 
+
+    if (!emailRegex.test(email)) {
+      alert("Inserisci un indirizzo email valido");
+      return;
+    }
+
+    if (password.length < 8) {
+      alert("La password deve contenere almeno 8 caratteri");
       return;
     }
 
@@ -108,7 +120,7 @@ const Register = () => {
       if (error.response.status === 409) {
         alert("Utente già esistente");
       }
-      
+
     }
   };
 
