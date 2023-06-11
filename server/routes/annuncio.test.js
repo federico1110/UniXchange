@@ -14,7 +14,7 @@ describe('GET /api/v1/annuncio', () => {
     jest.unmock('mongoose');
     connection = await mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log('Database connected!');
-    //return connection; // Need to return the Promise db connection?
+    
   });
 
   afterAll(() => {
@@ -22,7 +22,7 @@ describe('GET /api/v1/annuncio', () => {
     console.log("Database connection closed");
   });
 
-  // create a valid token
+  
   var token = jwt.sign(
     { id: '646b612a6b246153cf41037d' },
     process.env.SECRET_KEY,
@@ -44,7 +44,7 @@ describe('GET /api/v1/annuncio', () => {
 
   test('GET /api/v1/annuncio should respond with a 404 error', async () => {
     return request(app)
-      .get('/api/v1/annuncio/get?nome=fringorifero')
+      .get('/api/v1/annuncio/get?nome=unexisting')
       .expect(404)
   });
 
@@ -71,9 +71,6 @@ describe('GET /api/v1/annuncio', () => {
     return request(app)
       .get('/api/v1/annuncio/get?nome=test1')
       .set('Accept', 'application/json')
-      .expect((res) => {
-        console.log(res.body[0]._id)
-      })
       .then((res) => {
         return request(app)
           .delete('/api/v1/annuncio/delete')
@@ -81,7 +78,7 @@ describe('GET /api/v1/annuncio', () => {
           .set('Accept', 'application/json')
           .send({
             annunci: [res.body[0]._id]
-          }) // 
+          }) 
           .expect(200);
       });
 
