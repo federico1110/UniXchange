@@ -10,7 +10,6 @@ utenteRouter.get("/get", async (req, res) => {
     try{
         const utente = await utenteModel.findById(_id);
         
-        console.log(utente)
         if (utente == null) { 
             res.status(404);
             res.json({ message: "Utente non trovato" });
