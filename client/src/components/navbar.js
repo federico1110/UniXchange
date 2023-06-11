@@ -29,8 +29,8 @@ export const Navbar = () => {
         <Link to="/" onClick={() => setActiveMenu("")}>
                 <img src={process.env.PUBLIC_URL + "/logoUniXchange.png"} alt="Logo" />
         </Link>
-        {!cookies.access_token ? (<Link to="/auth" onClick={alertAuth} > I miei annunci </Link>) : (<Link to="/mieiAnnunci" className={activeMenu === "mieiAnnunci" ? "active" : ""} onClick={() => handleMenuClick("mieiAnnunci")}> I miei annunci </Link>)}
         {!cookies.access_token ? (<Link to="/auth" onClick={alertAuth}> Vetrina </Link>) : (<Link to="/vetrina" className={activeMenu === "vetrina" ? "active" : ""} onClick={() => handleMenuClick("vetrina")}> Vetrina </Link>)}
+        {!cookies.access_token ? (<Link to="/auth" onClick={alertAuth} > I miei annunci </Link>) : (<Link to="/mieiAnnunci" className={activeMenu === "mieiAnnunci" ? "active" : ""} onClick={() => handleMenuClick("mieiAnnunci")}> I miei annunci </Link>)}
         {!cookies.access_token ? (<Link to="/auth" onClick={alertAuth}> Aggiungi Annuncio </Link>) : (<Link to="/addAnnuncio" className={activeMenu === "addAnnuncio" ? "active" : ""} onClick={() => handleMenuClick("addAnnuncio")}> Aggiungi Annuncio </Link>)}
         {!cookies.access_token ? (<Link to="/auth"> Login/Register </Link>) : (<Link to="/auth" onClick={logout}> Logout </Link>)}
     </div>

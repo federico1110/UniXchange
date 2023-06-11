@@ -10,6 +10,21 @@ export const Vetrina = () => {
   const [universita, setUniversita] = useState("");
   const [annunci, setAnnunci] = useState([]);
   const [showAnnunci, setShowAnnunci] = useState(false);
+  const [sortOrder, setSortOrder] = useState("asc");
+
+  const addEmail = (id) => {
+    return axios
+      .get(`${serverURL}/api/v1/auth/get`, {
+        params: {
+          _id: id
+        }
+      })
+      .then((response) => response.data.email)
+      .catch((error) => {
+        console.error(error);
+        return null;
+      });
+  };
 
   const searchAnnuncio = async () => {
 
@@ -23,9 +38,17 @@ export const Vetrina = () => {
 
       });
 
-      setAnnunci(response.data);
+      const updatedAnnunci = await Promise.all(
+        response.data.map(async (annuncio) => {
+          const email = await addEmail(annuncio.proprietario);
+          annuncio.email = email;
+          return annuncio;
+        })
+      );
+  
+      setAnnunci(updatedAnnunci);
       setShowAnnunci(true);
-      console.log("1" + response.data);
+
 
     } catch (error) {
       console.error(error);
@@ -43,6 +66,19 @@ export const Vetrina = () => {
     }
 
     searchAnnuncio();
+  };
+
+  const handleSortAnnunci = () => {
+    const sorted = [...annunci].sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.prezzo - b.prezzo;
+      } else {
+        return b.prezzo - a.prezzo;
+      }
+    });
+
+    setAnnunci(sorted);
+    setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
   return (
@@ -81,17 +117,23 @@ export const Vetrina = () => {
         </div>
 
         <div className="input-form">
+        <label> &nbsp; </label>
           <button onClick={handleShowAllAnnunci}>Ricerca</button>
         </div>
 
       </div>
-      <h1>Qui puoi visualizzare gli annunci della tua ricerca</h1>
+      <h1 style={{textAlign: "center"}}>Qui puoi visualizzare gli annunci della tua ricerca</h1>
 
       {showAnnunci && (
         <div>
-          <h1>Annunci:</h1>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <h1> &nbsp; Annunci:</h1>
+            <button id="sorted-btn" onClick={handleSortAnnunci}>
+              Ordina per prezzo {sortOrder === "asc" ? "crescente" : "decrescente"}
+            </button>
+          </div>
           {Array.isArray(annunci) === false ? (
-            <h2>Nessun annuncio corrispondente alla ricerca</h2>
+            <h2> &nbsp; Nessun annuncio corrispondente alla ricerca</h2>
           ) : (
             <ul>
               {annunci.map((annuncio) => (
@@ -104,6 +146,9 @@ export const Vetrina = () => {
                   </div>
                   <div>
                     <h3>Università: {annuncio.universita} </h3>
+                  </div>
+                  <div>
+                    <h3>Email: {annuncio.email} </h3>
                   </div>
                   <div>
                     <h3>Descrizione: {annuncio.descrizione}</h3>

@@ -217,6 +217,17 @@ p {
   justify-content: center;
 }
 
+#sorted-btn {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 2px solid black;
+  background-color: white;
+  height: 30%;
+  align-self: center;
+  margin-right: 10px;
+}
+
 #img-container {
   display: flex;
   justify-content: center;
