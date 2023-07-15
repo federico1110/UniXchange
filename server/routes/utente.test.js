@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const UtenteModel = require('../models/Utente');
 const app = require('../index.js');
 
-describe('GET /api/v1/annuncio', () => {
+describe('GET /api/v1/utente', () => {
 
     let connection;
 
@@ -12,7 +12,7 @@ describe('GET /api/v1/annuncio', () => {
         jest.unmock('mongoose');
         connection = await mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log('Database connected!');
-        
+
     });
 
     afterAll(() => {

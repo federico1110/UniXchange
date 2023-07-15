@@ -14,7 +14,7 @@ describe('GET /api/v1/annuncio', () => {
     jest.unmock('mongoose');
     connection = await mongoose.connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log('Database connected!');
-    
+
   });
 
   afterAll(() => {
@@ -22,7 +22,7 @@ describe('GET /api/v1/annuncio', () => {
     console.log("Database connection closed");
   });
 
-  
+
   var token = jwt.sign(
     { id: '646b612a6b246153cf41037d' },
     process.env.SECRET_KEY,
@@ -78,7 +78,7 @@ describe('GET /api/v1/annuncio', () => {
           .set('Accept', 'application/json')
           .send({
             annunci: [res.body[0]._id]
-          }) 
+          })
           .expect(200);
       });
 

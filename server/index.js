@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
-    process.env.DB_URL
+  process.env.DB_URL
 );
 
 const db = mongoose.connection;
@@ -24,11 +24,13 @@ db.once("open", function () {
 app.use("/api/v1/annuncio", annuncioRouter);
 app.use("/api/v1/auth", utenteRouter);
 
-app.listen(3001, () => console.log("SERVER STARTED"));
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(3001, () => console.log("SERVER STARTED"));
+}
 
 app.use((req, res) => {
   res.status(404);
-  res.json({ error: "Not found"});
+  res.json({ error: "Not found" });
 });
 
 module.exports = app;
