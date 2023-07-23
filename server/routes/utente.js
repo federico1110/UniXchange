@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 
 const utenteRouter = express.Router();
 
-utenteRouter.get("/get", async (req, res) => {
+utenteRouter.get("/", async (req, res) => {
     const _id = req.query._id;
     try{
         const utente = await utenteModel.findById(_id);

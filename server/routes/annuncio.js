@@ -6,7 +6,7 @@ const { verifyToken } = require("./utente");
 
 const annuncioRouter = express.Router();
 
-annuncioRouter.get("/get", async (req, res) => {
+annuncioRouter.get("/", async (req, res) => {
     const nomeProdotto = req.query.nome;
     const categoria = req.query.categoria;
     const universita = req.query.universita;
@@ -58,7 +58,7 @@ annuncioRouter.get("/get", async (req, res) => {
   });
   
 
-annuncioRouter.post("/add", async (req, res) => {
+annuncioRouter.post("/", async (req, res) => {
     const annuncio = new annuncioModel(req.body);
     try{
         const response = await annuncio.save();
@@ -68,7 +68,7 @@ annuncioRouter.post("/add", async (req, res) => {
     }
 });
 
-annuncioRouter.delete("/delete", async (req, res) => {
+annuncioRouter.delete("/", async (req, res) => {
   const { annunci } = req.body;
 
   try {

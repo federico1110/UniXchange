@@ -13,7 +13,7 @@ export const MieiAnnunci = () => {
     try {
       const storedIdProp = window.localStorage.getItem("userID");
       if (storedIdProp) {
-        const response = await axios.get(`${serverURL}/api/v1/annuncio/get`, {
+        const response = await axios.get(`${serverURL}/api/v1/annuncio/`, {
           params: {
             proprietario: storedIdProp
           }
@@ -45,7 +45,7 @@ export const MieiAnnunci = () => {
 
   const handleDeleteSelected = async () => {
     try {
-      await axios.delete(`${serverURL}/api/v1/annuncio/delete`, {
+      await axios.delete(`${serverURL}/api/v1/annuncio/`, {
         data: {
           annunci: selectedAnnunci
         }

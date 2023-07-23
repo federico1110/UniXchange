@@ -14,7 +14,7 @@ export const Vetrina = () => {
 
   const addEmail = (id) => {
     return axios
-      .get(`${serverURL}/api/v1/auth/get`, {
+      .get(`${serverURL}/api/v1/auth/`, {
         params: {
           _id: id
         }
@@ -29,7 +29,7 @@ export const Vetrina = () => {
   const searchAnnuncio = async () => {
 
     try {
-      const response = await axios.get(`${serverURL}/api/v1/annuncio/get`, {
+      const response = await axios.get(`${serverURL}/api/v1/annuncio/`, {
         params: {
           nome: nomeProdotto,
           categoria: categoria,

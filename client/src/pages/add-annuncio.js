@@ -60,7 +60,7 @@ export const AddAnnuncio = () => {
     }
 
     try {
-      const response = await fetch(`${serverURL}/api/v1/annuncio/add`,
+      const response = await fetch(`${serverURL}/api/v1/annuncio/`,
         {
           method: "POST",
           headers: {
