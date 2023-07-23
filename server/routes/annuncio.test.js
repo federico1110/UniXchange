@@ -73,7 +73,7 @@ describe('TESTING /api/v1/annuncio', () => {
       .set('Accept', 'application/json')
       .then((res) => {
         return request(app)
-          .delete('/api/v1/annuncio/delete')
+          .delete('/api/v1/annuncio')
           .set('x-access-token', token)
           .set('Accept', 'application/json')
           .send({
