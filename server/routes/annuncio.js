@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const annuncioModel = require('../models/Annuncio');
 const utenteModel = require('../models/Utente');
-const { verifyToken } = require("./utente");
 
 const annuncioRouter = express.Router();
 

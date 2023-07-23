@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const annuncioRouter = require('./routes/annuncio');
 const utenteRouter = require('./routes/utente');
+const messaggioRouter = require("./routes/messaggio");
 const dotenv = require('./node_modules/dotenv');
 
 dotenv.config();
@@ -23,6 +24,7 @@ db.once("open", function () {
 
 app.use("/api/v1/annuncio", annuncioRouter);
 app.use("/api/v1/auth", utenteRouter);
+app.use("/api/v1/messaggio", messaggioRouter);
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(3001, () => console.log("SERVER STARTED"));
