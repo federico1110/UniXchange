@@ -26,7 +26,7 @@ export const MieiAnnunci = () => {
     } catch (error) {
       console.error(error);
       if (error.response.status === 404) {
-        setAnnunci(null); 
+        setAnnunci(null);
       }
     }
   };
@@ -75,8 +75,8 @@ export const MieiAnnunci = () => {
             <ul>
               {annunci.map((annuncio) => (
                 <li key={annuncio._id}>
-                  <div style={{ display: "flex", justifyContent: "space-between"}}>
-                    <h2 style={{ marginTop: 0, marginBottom: 0}}>Titolo: {annuncio.nome}</h2>
+                  <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <h2 style={{ marginTop: 0, marginBottom: 0 }}>Titolo: {annuncio.nome}</h2>
                     <div style={{ marginLeft: "auto" }}>
                       <input
                         type="checkbox"

@@ -1,17 +1,17 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {MieiAnnunci} from './pages/miei-annunci';
-import {Auth} from './pages/auth';
-import {Vetrina} from './pages/vetrina';
-import {AddAnnuncio} from './pages/add-annuncio';
+import { MieiAnnunci } from './pages/miei-annunci';
+import { Auth } from './pages/auth';
+import { Vetrina } from './pages/vetrina';
+import { AddAnnuncio } from './pages/add-annuncio';
 import { Navbar } from './components/navbar';
-import {HomePage} from './pages/home-page';
+import { HomePage } from './pages/home-page';
 
 
 function App() {
   return (
     <div className="App">
-      <Router> 
+      <Router>
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />}></Route>

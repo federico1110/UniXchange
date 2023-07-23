@@ -25,10 +25,10 @@ messaggioRouter.get("/", async (req, res) => {
 
 messaggioRouter.post("/", async (req, res) => {
     const messaggio = new messaggioModel(req.body);
-    try{
+    try {
         const response = await messaggio.save();
         res.json(messaggio);
-    } catch(err){
+    } catch (err) {
         res.json(err);
     }
 });

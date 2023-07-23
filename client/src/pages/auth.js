@@ -94,7 +94,7 @@ const Register = () => {
       return;
     }
 
-    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/; 
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
     if (!emailRegex.test(email)) {
       alert("Inserisci un indirizzo email valido");

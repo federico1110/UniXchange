@@ -28,24 +28,6 @@ describe('TESTING /api/v1/messaggio', () => {
     { expiresIn: 86400 }
   );
 
-  /*test('GET /api/v1/messaggio should respond with a 400 error', async () => {
-    return request(app)
-      .get('/api/v1/messaggio/')
-      .expect(400)
-  });
-
-  test('GET /api/v1/annuncio should respond with an array of annunci', async () => {
-    return request(app)
-      .get('/api/v1/annuncio/get?categoria=Telefonia')
-      .expect(200)
-  });
-
-  test('GET /api/v1/annuncio should respond with a 404 error', async () => {
-    return request(app)
-      .get('/api/v1/annuncio/get?nome=unexisting')
-      .expect(404)
-  });*/
-
   test('POST /api/v1/messaggio should post a message', async () => {
     return request(app)
       .post('/api/v1/messaggio/')

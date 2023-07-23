@@ -46,7 +46,7 @@ describe('TESTING /api/v1/utente', () => {
             .expect(200)
     });
 
-    test('POST /api/v1/auth shouldnt register an existing user', async () => {
+    test('POST /api/v1/auth should not register an existing user', async () => {
         return request(app)
             .post('/api/v1/auth/register')
             .set('Accept', 'application/json')

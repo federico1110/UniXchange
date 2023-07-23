@@ -79,7 +79,7 @@ export const AddAnnuncio = () => {
         prezzo: "",
         universita: "",
       });
-    
+
       ["nome", "descrizione", "categoria", "prezzo", "universita", "immagine"].forEach((campo) => {
         document.getElementById(campo).value = "";
       });
@@ -129,7 +129,7 @@ export const AddAnnuncio = () => {
 
         <div className="formAddAnnuncio">
           <label htmlFor="immagine"> Immagine </label>
-          <input type="file" id="immagine" name="immagine" onChange={convertToBase64} accept="image/*"/>
+          <input type="file" id="immagine" name="immagine" onChange={convertToBase64} accept="image/*" />
         </div>
 
         <button type="button" onClick={sendData}>Aggiungi annuncio</button>

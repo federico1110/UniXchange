@@ -45,7 +45,7 @@ export const Vetrina = () => {
           return annuncio;
         })
       );
-  
+
       setAnnunci(updatedAnnunci);
       setShowAnnunci(true);
 
@@ -117,12 +117,12 @@ export const Vetrina = () => {
         </div>
 
         <div className="input-form">
-        <label> &nbsp; </label>
+          <label> &nbsp; </label>
           <button onClick={handleShowAllAnnunci}>Ricerca</button>
         </div>
 
       </div>
-      <h1 style={{textAlign: "center"}}>Qui puoi visualizzare gli annunci della tua ricerca</h1>
+      <h1 style={{ textAlign: "center" }}>Qui puoi visualizzare gli annunci della tua ricerca</h1>
 
       {showAnnunci && (
         <div>
