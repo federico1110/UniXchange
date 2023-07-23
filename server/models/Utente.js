@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const AnnuncioSchema = require('./Annuncio');
+//const AnnuncioSchema = require('./Annuncio');
 
 const utenteSchema = new mongoose.Schema({
     nome: {type: String, required: true},
