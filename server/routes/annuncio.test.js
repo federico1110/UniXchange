@@ -5,7 +5,7 @@ const AnnuncioModel = require('../models/Annuncio');
 const app = require('../index.js');
 
 
-describe('GET /api/v1/annuncio', () => {
+describe('TESTING /api/v1/annuncio', () => {
 
   let connection;
 
@@ -32,25 +32,25 @@ describe('GET /api/v1/annuncio', () => {
 
   test('GET /api/v1/annuncio should respond with a 400 error', async () => {
     return request(app)
-      .get('/api/v1/annuncio/get')
+      .get('/api/v1/annuncio/')
       .expect(400)
   });
 
   test('GET /api/v1/annuncio should respond with an array of annunci', async () => {
     return request(app)
-      .get('/api/v1/annuncio/get?categoria=Telefonia')
+      .get('/api/v1/annuncio/?categoria=Telefonia')
       .expect(200)
   });
 
   test('GET /api/v1/annuncio should respond with a 404 error', async () => {
     return request(app)
-      .get('/api/v1/annuncio/get?nome=unexisting')
+      .get('/api/v1/annuncio/?nome=unexisting')
       .expect(404)
   });
 
   test('POST /api/v1/annuncio should post an ad', async () => {
     return request(app)
-      .post('/api/v1/annuncio/add')
+      .post('/api/v1/annuncio/')
       .set('x-access-token', token)
       .set('Accept', 'application/json')
       .send({
@@ -69,7 +69,7 @@ describe('GET /api/v1/annuncio', () => {
 
   test('DELETE /api/v1/annuncio should delete an ad', async () => {
     return request(app)
-      .get('/api/v1/annuncio/get?nome=test1')
+      .get('/api/v1/annuncio/?nome=test1')
       .set('Accept', 'application/json')
       .then((res) => {
         return request(app)

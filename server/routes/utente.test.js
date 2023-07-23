@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const UtenteModel = require('../models/Utente');
 const app = require('../index.js');
 
-describe('GET /api/v1/utente', () => {
+describe('TESTING /api/v1/utente', () => {
 
     let connection;
 
@@ -22,13 +22,13 @@ describe('GET /api/v1/utente', () => {
 
     test('GET /api/v1/auth should respond with an user', async () => {
         return request(app)
-            .get('/api/v1/auth/get?_id=646b612a6b246153cf41037d')
+            .get('/api/v1/auth/?_id=646b612a6b246153cf41037d')
             .expect(200)
     });
 
     test('GET /api/v1/auth should respond with a 404 error', async () => {
         return request(app)
-            .get('/api/v1/auth/get?_id=000000000000000000000000')
+            .get('/api/v1/auth/?_id=000000000000000000000000')
             .expect(404)
     });
 
