@@ -21,16 +21,9 @@ describe('TESTING /api/v1/messaggio', () => {
     console.log("Database connection closed");
   });
 
-  var token = jwt.sign(
-    { id: '64bd332f17104915f0a72e7d' },
-    process.env.SECRET_KEY,
-    { expiresIn: 86400 }
-  );
-
   test('POST /api/v1/messaggio should post a message', async () => {
     return request(app)
-      .post('/api/v1/messaggio/')
-      .set('x-access-token', token)
+      .post('/api/v1/messaggio')
       .set('Accept', 'application/json')
       .send({
         mittente: "64bd332f17104915f0a72e7d",
@@ -39,6 +32,17 @@ describe('TESTING /api/v1/messaggio', () => {
         testo: "Ciao, sarei interessato ad acquistare il tuo prodotto.",
       })
       .expect(200)
+  });
+
+  test('POST /api/v1/messaggio should not post a messaggio due to missing parameters ', async () => {
+    return request(app)
+      .post('/api/v1/messaggio')
+      .set('Accept', 'application/json')
+      .send({
+        mittente: "64807cb9d53cfd5389420d13",
+        destinatario: "6481a687a378ef79e54920eb",
+      })
+      .expect(400)
   });
 
   test('GET /api/v1/messaggio should respond with a 400 error - idMittente inesistente', async () => {

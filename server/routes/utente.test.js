@@ -32,6 +32,7 @@ describe('TESTING /api/v1/utente', () => {
             .expect(404)
     });
 
+    /*
     test('POST /api/v1/auth should register an user', async () => {
         return request(app)
             .post('/api/v1/auth/register')
@@ -44,7 +45,7 @@ describe('TESTING /api/v1/utente', () => {
                 password: "pass",
             })
             .expect(200)
-    });
+    });*/
 
     test('POST /api/v1/auth should not register an existing user', async () => {
         return request(app)

@@ -54,8 +54,21 @@ messaggioRouter.get("/", async (req, res) => {
 });
 
 messaggioRouter.post("/", async (req, res) => {
-    const messaggio = new messaggioModel(req.body);
+    const mittente = req.body.mittente;
+    const destinatario = req.body.destinatario;
+    const annuncio = req.body.annuncio;
+    const testo = req.body.testo;
+
     try {
+
+        if (mittente == null || destinatario == null || annuncio == null || testo == null) {
+            res.status(400);
+            res.json({ message: "Messaggio non creato per mancanza parametro/i" });
+            return
+        }
+
+        const messaggio = new messaggioModel(req.body);
+
         const response = await messaggio.save();
         res.json(messaggio);
     } catch (err) {
@@ -71,19 +84,18 @@ messaggioRouter.delete("/", async (req, res) => {
 
     try {
 
-        if (mittente == null || destinatario == null || annuncio == null || testo == null){
+        if (mittente == null || destinatario == null || annuncio == null || testo == null) {
             res.status(400);
-            res.json({ message: "Messaggio non eliminato per mancanza parametri" });
+            res.json({ message: "Messaggio non eliminato per mancanza parametro/i" });
             return
         }
 
-            await messaggioModel.deleteOne({ mittente: { $eq: mittente }, destinatario: { $eq: destinatario }, annuncio: { $eq: annuncio }, testo: { $eq: testo } });
+        await messaggioModel.deleteOne({ mittente: { $eq: mittente }, destinatario: { $eq: destinatario }, annuncio: { $eq: annuncio }, testo: { $eq: testo } });
 
         res.json({ message: "Messaggio eliminato con successo" });
     } catch (error) {
         res.json(error);
     }
 });
-
 
 module.exports = messaggioRouter;
