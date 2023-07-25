@@ -155,7 +155,7 @@ export const Vetrina = () => {
                     <h3>Descrizione: {annuncio.descrizione}</h3>
                   </div>
                   <div>
-                    <Link to={`/chatUtente/${annuncio._id}`}><button id="info-btn">Richiedi informazioni</button></Link>
+                    <Link to={`/chatUtente/${annuncio.nome}`}><button id="info-btn">Richiedi informazioni</button></Link>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <div id="img-container">
