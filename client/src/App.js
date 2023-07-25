@@ -6,7 +6,7 @@ import { Vetrina } from './pages/vetrina';
 import { AddAnnuncio } from './pages/add-annuncio';
 import { Navbar } from './components/navbar';
 import { HomePage } from './pages/home-page';
-
+import { ChatUtente } from './pages/chat-utente';
 
 function App() {
   return (
@@ -18,7 +18,8 @@ function App() {
           <Route path="/mieiAnnunci" element={<MieiAnnunci />}></Route>
           <Route path="/vetrina" element={<Vetrina />}></Route>
           <Route path="/auth" element={<Auth />}></Route>
-          <Route path="/addAnnuncio" element={<AddAnnuncio />}></Route>
+          <Route path="/addAnnuncio" element={<AddAnnuncio />}>Annuncio</Route>
+          <Route path="/chatUtente/:id" element={<ChatUtente />}></Route>
         </Routes>
       </Router>
 

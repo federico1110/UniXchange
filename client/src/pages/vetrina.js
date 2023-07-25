@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import universitaList from '../data/universita.json';
 
 const serverURL = process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
@@ -153,19 +154,21 @@ export const Vetrina = () => {
                   <div>
                     <h3>Descrizione: {annuncio.descrizione}</h3>
                   </div>
+                  <div>
+                    <Link to={`/chatUtente/${annuncio._id}`}><button id="info-btn">Richiedi informazioni</button></Link>
+                  </div>
                   <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <div id="img-container">
                       <img src={annuncio.immagine} alt={annuncio.nome} />
                     </div>
                   </div>
-
-
                 </li>
-              ))}
-            </ul>
-          )}
-        </div>
+          ))}
+        </ul>
       )}
     </div>
+  )
+}
+    </div >
   );
 };
