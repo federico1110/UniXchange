@@ -6,7 +6,7 @@ import { Vetrina } from './pages/vetrina';
 import { AddAnnuncio } from './pages/add-annuncio';
 import { Navbar } from './components/navbar';
 import { HomePage } from './pages/home-page';
-
+import {Modifica} from './pages/modifica-annuncio';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/vetrina" element={<Vetrina />}></Route>
           <Route path="/auth" element={<Auth />}></Route>
           <Route path="/addAnnuncio" element={<AddAnnuncio />}></Route>
+          <Route path="/modifica-annuncio" element={<Modifica />}></Route>
         </Routes>
       </Router>
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 
@@ -58,6 +59,23 @@ export const MieiAnnunci = () => {
     }
   };
 
+
+  const navigate = useNavigate();
+  const handleModSelected = async () => {
+    try {
+      if (selectedAnnunci.length === 1) {
+
+        window.localStorage.setItem("modificaID", selectedAnnunci);
+        navigate("/modifica-annuncio")
+
+      } else {
+        alert("seleziona un solo annuncio da modificare")
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="vetrina-container">
 
@@ -65,9 +83,10 @@ export const MieiAnnunci = () => {
 
       {showAnnunci && (
         <div>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div id="bottoni" style={{ display: "flex", justifyContent: "space-between" }}>
             <h1>Annunci:</h1>
             <button id="miei-annunci-btn" onClick={handleDeleteSelected}>Elimina annunci selezionati</button>
+            <button id="miei-annunci-modifica-btn" onClick={handleModSelected} >Modifica annunci selezionati</button>
           </div>
           {Array.isArray(annunci) === false ? (
             <h2>Non hai ancora inserito nessun annuncio, fallo ora con la sezione Aggiungi Annuncio</h2>
