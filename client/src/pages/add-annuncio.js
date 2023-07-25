@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import universitaList from '../data/universita.json';
 
 const serverURL = process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
 
 export const AddAnnuncio = () => {
-
+  const navigate = useNavigate();
   const [inputValues, setInputValues] = useState({
     nome: "",
     descrizione: "",
@@ -84,6 +85,7 @@ export const AddAnnuncio = () => {
         document.getElementById(campo).value = "";
       });
 
+    navigate("/mieiAnnunci");
     } catch (error) {
       console.error(error);
     }

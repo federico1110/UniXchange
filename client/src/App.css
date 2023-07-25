@@ -88,6 +88,59 @@ a {
   font-size: 25px;
 }
 
+
+
+.mod-annuncio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  width: 400px;
+}
+
+.mod-annuncio form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.FormModAnnuncio {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.FormModAnnuncio input {
+  font-size: 14px;
+  border: 2px solid black;
+}
+
+.FormModAnnuncio select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 2px solid black;
+}
+
+.mod-annuncio button {
+  padding: 10px 24px;
+  font-weight: bold;
+  border-radius: 8px;
+  color: white;
+  background-color: red;
+}
+
+
+
 .add-annuncio {
   display: flex;
   flex-direction: column;
@@ -212,6 +265,17 @@ p {
   border: 2px solid black;
 }
 
+#homep{
+  border-top: 50px;
+}
+#modProf {
+  font-size: 14px;
+  border-radius: 8px;
+  border: 2px solid red;
+  background-color: red;
+  text-align: center;
+}
+
 #formRicerca {
   display: flex;
   justify-content: center;
@@ -262,6 +326,21 @@ img {
   align-self: center;
   margin-right: 10px;
 }
+
+#miei-annunci-modifica-btn {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 2px solid red;
+  background-color: red;
+  height: 30%;
+  align-self: center;
+  margin-right: 10px;
+}
+#bottoni {
+  justify-content: right;
+}
+
 
 input[type=checkbox]{
   transform: scale(1.5);
