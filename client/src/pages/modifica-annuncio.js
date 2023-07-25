@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import universitaList from '../data/universita.json';
 import { useNavigate } from "react-router-dom";
-const serverURL = process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
 
+const serverURL = process.env.REACT_APP_SERVER_URL || "http://localhost:3001";
 
 export const Modifica = () => {
 
@@ -99,7 +99,6 @@ export const Modifica = () => {
         console.error(error);
       }
     };
-  
 
     return (
         <div className="mod-annuncio">

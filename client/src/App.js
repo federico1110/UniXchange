@@ -6,7 +6,7 @@ import { Vetrina } from './pages/vetrina';
 import { AddAnnuncio } from './pages/add-annuncio';
 import { Navbar } from './components/navbar';
 import { HomePage } from './pages/home-page';
-
+import { Modifica } from './pages/modifica-annuncio';
 import { ChatUtente } from './pages/chat-utente';
 
 

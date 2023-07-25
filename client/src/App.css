@@ -63,7 +63,7 @@ input {
   border-bottom: 3px solid red;
 }
 
-.navbar a{
+.navbar a {
   color: red;
   text-decoration: none;
   margin: 50px;
@@ -87,8 +87,6 @@ a {
   margin: 10px;
   font-size: 25px;
 }
-
-
 
 .mod-annuncio {
   display: flex;
@@ -139,8 +137,6 @@ a {
   background-color: red;
 }
 
-
-
 .add-annuncio {
   display: flex;
   flex-direction: column;
@@ -153,6 +149,7 @@ a {
   margin: 20px;
   width: 400px;
 }
+
 .add-annuncio form {
   display: flex;
   width: 100%;
@@ -166,14 +163,15 @@ a {
   width: 100%;
   display: flex;
   flex-direction: column;
-  
+
 }
 
-.formAddAnnuncio input{
+.formAddAnnuncio input {
   font-size: 14px;
   border: 2px solid black;
 }
-.formAddAnnuncio select{
+
+.formAddAnnuncio select {
   padding: 10px;
   font-size: 14px;
   border-radius: 8px;
@@ -184,18 +182,16 @@ a {
   border-radius: 5px;
   border: 2px solid black;
   font-size: 14px;
-  font-style:normal;
+  font-style: normal;
 }
 
-.add-annuncio button{
+.add-annuncio button {
   padding: 10px 24px;
   font-weight: bold;
   border-radius: 8px;
   color: white;
   background-color: red;
 }
-
-
 
 ul {
   list-style: none;
@@ -212,7 +208,6 @@ li {
 h2 {
   margin-top: 0;
 }
-
 
 p {
   max-width: 400px;
@@ -236,20 +231,20 @@ p {
   align-items: center;
 }
 
-.input-form{
+.input-form {
   display: flex;
   flex-direction: column;
   margin: 10px;
 }
 
-.input-form input{
+.input-form input {
   padding: 10px;
   font-size: 14px;
   border-radius: 8px;
   border: 2px solid black;
 }
 
-.input-form button{
+.input-form button {
   padding: 10px;
   font-size: 14px;
   border-radius: 8px;
@@ -257,7 +252,7 @@ p {
   background-color: red;
 }
 
-.input-form select{
+.input-form select {
   width: 240px;
   padding: 10px;
   font-size: 14px;
@@ -265,9 +260,10 @@ p {
   border: 2px solid black;
 }
 
-#homep{
+#homep {
   border-top: 50px;
 }
+
 #modProf {
   font-size: 14px;
   border-radius: 8px;
@@ -337,24 +333,24 @@ img {
   align-self: center;
   margin-right: 10px;
 }
+
 #bottoni {
   justify-content: right;
 }
 
-
-input[type=checkbox]{
+input[type=checkbox] {
   transform: scale(1.5);
 }
 
-
-.chat-container{
+.chat-container {
   margin-top: 200px;
+  box-shadow: 10px 10px;
   width: 600px;
   height: 500px;
 }
 
-.chat-list li{
-  display:inline-block;
+.chat-list li {
+  display: inline-block;
   clear: both;
   padding: 20px;
   border-radius: 30px;
@@ -362,22 +358,22 @@ input[type=checkbox]{
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.chat-item-him{
+.chat-item-him {
   background: #eee;
   float: left;
 }
 
-.chat-item-me{
+.chat-item-me {
   float: right;
   background: #0084ff;
   color: #fff;
 }
 
-.chat-item-him + .chat-item-me{
+.chat-item-him+.chat-item-me {
   border-bottom-right-radius: 5px;
 }
 
-.chat-item-me + .chat-item-me{
+.chat-item-me+.chat-item-me {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
