@@ -348,6 +348,7 @@ input[type=checkbox] {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 600px;
   height: 500px;
+  position: relative;
 }
 
 .chat-list{
@@ -400,4 +401,9 @@ input[type=checkbox] {
   border-radius: 8px;
   border: 2px solid black;
   background-color: white;
+}
+
+#chat-button-box{
+  position: absolute;
+  bottom: 10px;
 }
