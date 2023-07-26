@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -12,25 +12,70 @@ export const ChatUtente = () => {
     );
 };
 
-const checkAnnuncio = async (nome) => {
-    try {
-        const response = await axios.get(`${serverURL}/api/v1/annuncio`, {
-            params: {
-                nome: nome,
-                fullmatch: true
-            }
-        });
-    } catch (error) {
-        if (error.response.status === 404) {
-            window.location.replace('/vetrina');
-        }
-    };
-}
-
 const Chat = () => {
+    const [datiAnnuncio, setDatiAnnuncio] = useState([]);
+    const [messaggio, setMessaggio] = useState("");
 
     let nomeAnnuncio = useParams();
-    checkAnnuncio(nomeAnnuncio.id);
+
+    const checkAnnuncio = async (nome) => {
+        try {
+            const { data: response } = await axios.get(`${serverURL}/api/v1/annuncio`, {
+                params: {
+                    nome: nome,
+                    fullmatch: true
+                }
+            })
+
+            setDatiAnnuncio(response[0]);
+
+        } catch (error) {
+            if (error.response.status === 404) {
+                window.location.replace('/vetrina');
+            }
+        };
+    }
+
+    useEffect(() => {
+        checkAnnuncio(nomeAnnuncio.id);
+    }, []);
+
+    const inviaMessaggio = async (event) => {
+        event.preventDefault();
+
+        if (!messaggio.trim()) {
+            alert("Scrivi un messaggio prima di inviarlo!");
+            return;
+        }
+
+        if (messaggio.length > 300) {
+            alert("Il messaggio è troppo lungo!");
+            return;
+        }
+
+        const mittente = window.localStorage.getItem("userID");
+        const destinatario = datiAnnuncio.proprietario;
+        const annuncio = datiAnnuncio._id;
+
+        try {
+
+            axios.post(`${serverURL}/api/v1/messaggio`, {
+                mittente: mittente,
+                destinatario: destinatario,
+                annuncio: annuncio,
+                testo: messaggio
+            });
+
+            alert("Messaggio inviato!");
+
+        } catch (error) {
+            console.error(error);
+            if (error.response.status === 400) {
+                alert("Errore nell'invio del messaggio");
+            }
+
+        }
+    };
 
     return (
         <div className="chat-container">
@@ -42,23 +87,11 @@ const Chat = () => {
                 <li class="chat-item-me">By this User, fourth message</li>
             </ul>
             <div>
-                <form>
-                    <input type="text" id="chat-text" name="chat" />
+                <form onSubmit={inviaMessaggio}>
+                    <input type="text" id="chat-text" name="chat" onChange={(event) => setMessaggio(event.target.value)} />
                     <button id="chat-btn" type="submit">Invia messaggio</button>
                 </form>
             </div>
         </div>
     );
 };
-
-/** 
-Check annuncio esiste
-
-Inserisci test mockup utente venditore
-
-Get mittente dest X ann
-Get dest mittente X ann
-Unisci array e ordina decr
-
-Form validate col messaggio da utente a venditore sull' idannuncio 
-*/
