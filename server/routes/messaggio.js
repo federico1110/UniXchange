@@ -67,6 +67,15 @@ messaggioRouter.post("/", async (req, res) => {
             return
         }
 
+        console.log(mittente);
+        console.log(destinatario);
+
+        if(mittente == destinatario){
+            res.status(409);
+            res.json({ message: "Messaggio non creato per conflitto id destinatario e mittente" });
+            return
+        }
+
         const messaggio = new messaggioModel(req.body);
 
         const response = await messaggio.save();

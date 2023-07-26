@@ -34,6 +34,19 @@ describe('TESTING /api/v1/messaggio', () => {
       .expect(200)
   });
 
+  test('POST /api/v1/messaggio should not post a message due to conflicting mittente destinatario', async () => {
+    return request(app)
+      .post('/api/v1/messaggio')
+      .set('Accept', 'application/json')
+      .send({
+        mittente: "64bd332f17104915f0a72e7d",
+        destinatario: "64bd332f17104915f0a72e7d",
+        annuncio: "6481a70ca378ef79e54920ef",
+        testo: "Ciao, sarei interessato ad acquistare il tuo prodotto.",
+      })
+      .expect(409)
+  });
+
   test('POST /api/v1/messaggio should not post a messaggio due to missing parameters ', async () => {
     return request(app)
       .post('/api/v1/messaggio')
